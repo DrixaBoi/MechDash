@@ -1,12 +1,97 @@
-import { View, Text } from 'react-native'
+import { View, Text, Pressable, StyleSheet, Image, SafeAreaView } from 'react-native'
 import React from 'react'
 
-const socialSignInButtons = () => {
+// image logos
+import Facebook from '../../../assets/facebook.png'
+import Google from '../../../assets/google.png'
+import Apple from '../../../assets/apple.png'
+
+const SocialSignInButtons = (onPress) => {
+    const onSignInFacebook = () => {
+        console.warn("Sign in with Facebook");
+    };
+
+    const onSignInGoogle = () => {
+        console.warn("Sign in with Google");
+    };
+
+    const onSignInApple = () => {
+        console.warn("Sign in with Apple");
+    };
+
   return (
-    <View>
-      <Text>socialSignInButtons</Text>
-    </View>
+    <SafeAreaView>
+        <View style={styles.container}>
+            <Text style={styles.text}>
+                Or continue with a social account
+            </Text>      
+        
+            <View style={styles.button_container}>
+                <Pressable 
+                    style={styles.button}
+                    onPress={onSignInFacebook}
+                >
+                    <Image 
+                        style={styles.logo}
+                        source={Facebook}
+                        resizeMode='contain'  
+                    />
+                </Pressable>
+                <Pressable 
+                    style={styles.button}
+                    onPress={onSignInGoogle}
+                >
+                    <Image 
+                        style={styles.logo}
+                        source={Google}
+                        resizeMode='contain'  
+                    />
+                </Pressable>
+                <Pressable 
+                    style={styles.button}
+                    onPress={onSignInApple}
+                >
+                    <Image 
+                        style={styles.logo}
+                        source={Apple}
+                        resizeMode='contain'    
+                    />
+                </Pressable>
+            </View>
+        </View>
+    </SafeAreaView>
   )
 }
 
-export default socialSignInButtons
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+    },
+    button_container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    text: {
+        fontSize: 15,
+        marginBottom: 10,
+    },
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 10,
+
+        backgroundColor: '#93939c',
+        
+        width: 80,
+        height: 80,
+        borderRadius: 50,
+    },
+    logo: {
+        width: 40,
+        height: 40,
+    },
+});
+
+export default SocialSignInButtons

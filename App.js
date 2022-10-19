@@ -1,17 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native';
-import Navigation from './src/Navigation/index';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import Navigation from './src/Navigation';
 
 export default function App() {
   return (
-    <View style={styles.root}>
+    <SafeAreaView style={styles.root}>
       <Navigation />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#bfbfbf',
+  root: {
+    flex: 1
   },
 });
