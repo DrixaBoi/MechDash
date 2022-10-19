@@ -76,21 +76,22 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 15,
         marginBottom: 10,
+        color: '#e7ddd2'
     },
     button: {
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 10,
 
-        backgroundColor: '#93939c',
+        backgroundColor: '#e7ddd2',
         
-        width: 80,
-        height: 80,
+        width: 50,
+        height: 50,
         borderRadius: 50,
     },
     logo: {
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
     },
 });
 

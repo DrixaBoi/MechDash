@@ -8,13 +8,14 @@ const CustomButton = ({
   altWidth,
   bgColor,
   fgColor,
-  fontColor
+  fontColor,
+  childColor,
+  childText
 }) => {
 
   return (
-    <View>
       <Pressable
-        onpress={onPress}
+        onPress={onPress}
         style={[
           styles.container,
           styles[`container_${type}`],
@@ -36,14 +37,13 @@ const CustomButton = ({
           </Text>
         </Text>
       </Pressable>
-    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     width: '80%',
-    padding: 15,
+    padding: 10,
     marginVerticle: 5,
     alignItems: 'center',
     borderRadius: 5,

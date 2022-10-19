@@ -1,13 +1,14 @@
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
 
 // Images
 import Logo from '../../../assets/mechanicus.png';
 
 // components
 import CustomInput from '../../components/CustomInput/CustomInput';
+import CustomButton from '../../components/CustomButton/CustomButton';
+import SocialSignInButtons from '../../components/SocialSignInButtons/SocialSignInButtons';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -15,12 +16,17 @@ const Login = () => {
 
   const navigation = useNavigation();
 
-  const [loaded] = useFonts({
-    CENSCBK: require('../../../assets/fonts/CENSCBK.TTF'),
-  });
-  if (!loaded) {
-    return null;
-  }
+  const onSignInPressed = () => {
+    console.warn('Sign In Pressed')
+  };
+
+  const onForgotPressed = () => {
+    console.warn('Forgot Pressed')
+  };
+
+  const onRegisterPressed = () => {
+    navigation.navigate('Register')
+  };
 
   return (
     <ScrollView>
@@ -30,12 +36,11 @@ const Login = () => {
           style={styles.logo}
           resizeMode='contain'
         />
-      
+        <Text style={styles.title}>Welcome User</Text>
         <CustomInput
           placeholder="Email"
           value={username}
           setValue={setUsername}
-          maxLength={30}
         />
 
         <CustomInput
@@ -43,8 +48,29 @@ const Login = () => {
           value={userPassword}
           setValue={setUserPassword}
           secureTextEntry={true}
-          maxLength={20}
         />
+
+        <CustomButton 
+          text='Sign In'
+          onPress={onSignInPressed}
+        />
+
+        <CustomButton 
+          text='Forgot Password?'
+          onPress={onForgotPressed}
+          type="TERTIARY"
+        />
+
+        <CustomButton 
+          text="Don't have access?"
+          childText=" Register!"
+          onPress={onRegisterPressed}
+          type="TERTIARY"
+          fontColor='#e7ddd2'
+          childColor='#c06436'
+        />
+
+        <SocialSignInButtons />
       </View>
     </ScrollView>
   )
@@ -54,17 +80,16 @@ const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     backgroundColor: '#555f64',
-    padding: 20
   },
   logo: {
     width: '70%',
-    maxWidth: 400,
-    maxHeight: 400,
-    marginTop: 80
+    maxWidth: 300,
+    maxHeight: 300,
   },
   title: {
     fontWeight: 'bold',
-    fontFamily: 'CENSCBK'
+    fontSize: 20,
+    color: '#e7ddd2'
   }
 });
 
