@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, SafeAreaView, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
 
 // Images
 import Logo from '../../../assets/mechanicus.png';
@@ -14,52 +15,57 @@ const Login = () => {
 
   const navigation = useNavigation();
 
+  const [loaded] = useFonts({
+    CENSCBK: require('../../../assets/fonts/CENSCBK.TTF'),
+  });
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <ScrollView>
-      <SafeAreaView style={styles.root}>
+      <View style={styles.root}>
         <Image
           source={Logo}
           style={styles.logo}
           resizeMode='contain'
         />
-        <View style={styles.input_container}>
-          <CustomInput
-            placeholder="Email"
-            value={username}
-            setValue={setUsername}
-          />
+      
+        <CustomInput
+          placeholder="Email"
+          value={username}
+          setValue={setUsername}
+          maxLength={30}
+        />
 
-          <CustomInput
-            placeholder="Password"
-            value={userPassword}
-            setValue={setUserPassword}
-          />
-        </View>
-      </SafeAreaView>
+        <CustomInput
+          placeholder="Password"
+          value={userPassword}
+          setValue={setUserPassword}
+          secureTextEntry={true}
+          maxLength={20}
+        />
+      </View>
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   root: {
-    flex: 1,
     alignItems: 'center',
-    backgroundColor: '#555f64'
+    backgroundColor: '#555f64',
+    padding: 20
   },
   logo: {
     width: '70%',
     maxWidth: 400,
-    maxHeight: 400
-  },
-  input_container: {
-    marginVertical: 20
+    maxHeight: 400,
+    marginTop: 80
   },
   title: {
     fontWeight: 'bold',
-  },
-  text: {
-    color: '#e6dbd0'
+    fontFamily: 'CENSCBK'
   }
-})
+});
 
 export default Login

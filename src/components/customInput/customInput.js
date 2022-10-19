@@ -1,15 +1,15 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React from 'react'
 
-const CustomInput = (
+const CustomInput = ({
   value,
   setValue,
   placeholder,
-  secureTextEntry
-) => {
+  secureTextEntry,
+}) => {
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         value={value}
         onChangeText={setValue}
@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
   input: {
       flex: 1,
       alignContent: 'flex-start',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      color: '#000000'
   },
 });
 
